@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{extramarks}
+\usepackage[inline]{enumitem}
+\usepackage{amsmath,amssymb,latexsym,amsfonts, amsthm}
+\usepackage[fontsize=13pt]{scrextend} % Font size
+% \usepackage{verbatim} % coding
+
+\usepackage[tracking]{microtype} % Font
+\usepackage[sc,osf]{mathpazo} % Font
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+% \usepackage[all]{xy} % diagram
+
+% \usepackage{tikz} % diagram
+% \usepackage{tikz-cd} % diagram
+
+% \usetikzlibrary{arrows}
+% \usetikzlibrary{matrix}
+
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{2016-11988} % Top left header
+\chead{3341.202 Introduction to Mathematical Analysis} % Top center header
+\rhead{Lee Young Jae} % Top right header
+\lfoot{\lastxmark} % Bottom left footer
+\cfoot{} % Bottom center footer
+\rfoot{Page\ \thepage\ of\ \pageref{LastPage}} % Bottom right footer
+\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+% Header and footer for when a page split occurs within a problem environment
+\newcommand{\enterProblemHeader}[1]{
+\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+}
+
+% Header and footer for when a page split occurs between problem environments
+\newcommand{\exitProblemHeader}[1]{
+\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
+\nobreak\extramarks{#1}{}\nobreak
+}
+
+
+\setcounter{secnumdepth}{0}
+
+
+\begin{document}
+\begin{titlepage}
+\centering
+{\scshape\LARGE Seoul National University \par}
+\vspace{1.5cm}
+{\huge\bfseries Introduction to\\Mathematical Analysis\par}
+\vspace{1cm}
+{\scshape\Large Assignment \# 1\par}
+
+\vspace{1cm}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=60mm]{bonobono.png}
+\end{figure}
+
+\vspace{2cm}
+
+\arrayrulewidth=1.2pt
+\begin{tabular}{p{2.5cm}p{2cm}}
+\centering
+& \\
+\cline{2-2}
+\vspace{-.73cm}
+My Score? & \\
+\end{tabular}
+
+
+
+\vfill
+\vspace{1cm}\par
+\textsc{\large Lee Young Jae}
+\vspace{1cm}\par
+{\Large \today\par}
+\end{titlepage}
+
+\setlength{\parindent}{0cm}
+
+
+\begin{enumerate}[font = \Large\bfseries\itshape\space, leftmargin = 3mm, labelsep = 3mm]
+\item
+Prove Corollary 5.5.6(i) $\Rightarrow$(ii) of the lecture.
+\begin{proof}
+Since $S$ has at least two points, so is $C(S)$.
+Since $M$ is a linear subspace of $C(S)$, $M$ also has at least two points, and $M$ contains 1.
+By remark 5.5.5(ii), we only have to show that $M$ separates the points of $S$ if $M$ is a linear dense subset of $C(S)$.\\
+Fix $x,y \in S$ and let $f(x) = d(x,y), \epsilon = d(x,y)/2$.
+As distance function is continuous, $f \in C(S)$.
+Since $M$ is a dense in $C(S)$, there is a function $g \in M$ such that $\|f-g\| < \epsilon$.
+As the norm is defined as uniform norm, $|f(x) - g(x)|, |f(y) - g(y)| < \epsilon = d(x,y) /2$.
+Now, $-d(x,y)/2 < g(x) < d(x,y)/2 < g(y) < 3d(x,y)/2$, hence $g(x) \neq g(y)$.
+In other words, $M$ separates the points of $S$.
+\end{proof}
+
+\item
+Let $\alpha \in (0,1]$.
+$f : [0,1] \rightarrow \mathbb{R}$ is said to be H\"older continuous of order $\alpha$, if for some constant $C > 0$
+$$|f(x)-f(y)| \leq C|x-y|^\alpha \quad \text{for any } x,y \in [0,1].$$
+Define the H\"older norm of $f$ by
+$$\|f\|_\alpha := \sup \left\{ |f(x)| + \frac{|f(x)-f(y)|}{|x-y|^\alpha}; x,y \in [0.1], x\neq y \right\}.$$
+Show that the closure of $A := \{ f : [0,1] \rightarrow \mathbb{R}; \|f\|_\alpha \leq 1\}$ in $C([0,1])$ is compact.
+\begin{proof}
+In Ascoli-Arzela theorem, we have to show that 1) $A$ is closed 2) $A$ is pointwise bounded 3) $A$ is equicontinuous to show that $A$ is compact.
+1) and 2) is obvious, hence only we have to show is 3).\\
+Fix $x \in [0,1],\enspace \epsilon > 0$.
+Suppose $|f(x)-f(y)| \leq C_f |x-y|^\alpha$ for any $x,y \in [0,1]$.
+Then, $\frac{|f(x)-f(y)|}{|x-y|^\alpha} \leq \|f\|_\alpha \leq 1$ implies that every $C_f$ is bounded by $1$ for $f \in A$.
+That is, $|f(x)-f(y)| \leq |x-y|^\alpha$ for all $f \in A$.
+Now, if $d(x,y) = |x-y| < \delta$, then $\sup_{f \in A} \|f(x)-f(y)\| \leq \sup_{f \in A}|x-y|^\alpha = |x-y|^\alpha < \epsilon$ for $\delta = \epsilon^{1/\alpha}$
+\end{proof}
+
+\item
+Give an example of a sequence $(f_n)_{n\geq 1}$ in $C([0,1])$, that is
+\begin{enumerate}[label = (\roman*)]
+\item uniformly bounded but does not have a uniformly convergent subsequence.
+\item equicontinuous but does not have a uniformly convergent subsequence.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}[label = (\roman*)]
+\item $f_n(x) = \cos\frac{2\pi}{n}x$
+\item $f_n(x) = x + n$.
+\end{enumerate}
+\end{proof}
+
+\item
+\begin{enumerate}[label=(\roman*)]
+\item
+Define $p_n : [-1.1] \rightarrow \mathbb{R}, n \geq 1$, recursively by $p_0 \equiv 0$ and
+$$p_{n+1}(x) := p_n(x) + \frac{1}{2}(x^2-p_n(x)^2), \quad n\geq 1.$$
+Show that $(p_n)_{n\geq 1}$ converges uniformly on $[-1,1]$ to $x\mapsto |x|$.
+
+\item
+Let $f:[0,1]\rightarrow \mathbb{R}$ be continuous and
+$$\int_0^1 f(x)x^ndx = 0 \quad \text{for any integer } n \geq 0.$$
+Show that $f(x) = 0$ for any $x \in [0,1]$.
+\end{enumerate}
+
+\begin{proof}
+\begin{enumerate}[label = (\roman*)]
+\item
+Since $p_n$ is even function recursively, we can restrict the domain of $p_n$ as $[0,1]$.
+Subtract $x$ on both sides and let $q_n(x) := p_n(x) - x$.
+Then $(q_n)$ has the following properties:
+\begin{enumerate}
+\item 
+$q_{n+1}(x) = q_n(x)(1-x-q_n(x)/2)$
+
+\item
+$q_0(x) = -x, q_1(x) = \frac{x^2}{2} - x, q_2(x) = -\frac{x^4}{8} + x^2 - x$.
+
+\item
+If $q_n < 0$, then $1-x-q_n > 0$. Hence $q_{n+1} < 0$ inductively.
+By ii, $q_n < 0$.
+
+\item
+$q_2(x) > \frac{9}{10}x$ in $[0,1]$ and hence $q_3(x) > q_2(x)(1-x+\frac{9}{10}x) = q_2(x)(1-\frac{1}{10}x)$
+
+\item
+If $q_n(x) > \frac{9}{10}x$, then so is $q_{n+1}(x) = q_n(x)(1-x+q_n(x)/2) > q_n(x)(1-\frac{1}{10}x) > q_n(x) > \frac{9x}{10}$.
+By iv, $q_n(x) > \frac{9x}{10}x$ for all $n > 1$.
+\end{enumerate}
+
+To show that $q_n$ converges to $0$ uniformly, fix $\epsilon > 0$ and find $N\in\mathbb{N}$ such that $n > N \Rightarrow \|q_n\| \leq \epsilon$.\\
+As $\lim_{x\rightarrow0}q_2(x) = 0$, there exists $\delta \in [0,1)$ such that $|x|<\delta \Rightarrow |q_2(x)| < \epsilon$.
+Then $q_{n+1}(x) > q_n(x)(1-\delta/10)$ for all $x \in [\delta,1]$.
+Since the absolute value of $q_n(x)$ decreases with ratio less then $1-\delta$ and $q_2(x)$ is bounded on $[\delta,1]$, we can find $N$ such that $|q_n(x)| < \epsilon$ for all $x \in [\delta,1]$ and $n \geq N$.
+Moreover, $\max_{x\in[0,\delta]}{q_2(x)} < \epsilon$, hence $|q_n(x)| < \epsilon$ for all $n > 1, x \in [0,\delta]$.\\
+Now we find $N$ such that $n > N \Rightarrow \|q_n\| \leq \epsilon$, hence $q_n$ uniformly converges to $0$, and $p_n$ converges to $x$.
+
+\item By Weierstrass theorem, there is a polynomial $p_n$ such that $\|f-p_n\| < \frac{1}{n}$ for each $n \in \mathbb{N}$.
+If there is $x_0 \in [0,1]$ such that $f(x_0) \neq 0$ (W.L.O.G. let $f(x_0) > 0$, then there is an interval $[a,b]$ $(a\neq b)$ containing $x_0$ such that $[a,b] \subset f^{-1}([f(x_0)/2, f(x_0)])$.\\
+However, $f(x_0)^2 (b-a) \leq \int_0^1 f(x)^2 dx \leq \int_0^1 f(x)^2 + p_n(x)^2 dx \leq \int_0^1 f(x)^2 - 2f(x)p_n(x) + p_n(x)^2 dx = \int_0^1 (f(x)-p_n(x))^2 dx \leq \int_0^1 \|f-p_n\| dx \leq \frac{1}{n^2}$ for each $n$, which makes a contradiction for sufficient large $n$.\\
+Hence $f(x) = 0$ for every $x \in [0,1]$.
+\end{enumerate}
+\end{proof}
+
+
+\end{enumerate}
+\end{document}
